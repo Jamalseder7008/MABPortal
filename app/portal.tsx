@@ -1,9 +1,17 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
+// index.tsx - this might need to go into index.tsx
+import { AppRegistry } from 'react-native';
+import App from '../src/App'; // Ensure this path is correct
+import { name as appName } from '../package.json'; // Use package.json for Expo projects
+
+AppRegistry.registerComponent(appName, () => App);
+//up to here
+export default function Portal() {
   return (
+
     <View style={styles.container}>
-        <Text style={{ color: '#fff' }}>This is where the Quran classes portal will go</Text>
+        <Text style={{ color: '#000' }}>This is where the Quran classes portal will go</Text>
     </View>
   );
 }
@@ -12,7 +20,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#25292e',
+
     alignItems: 'center',
     justifyContent: 'center',
   },

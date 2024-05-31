@@ -2,10 +2,18 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, Platform } from 'react-native';
 
 
-import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+
+// index.tsx
+import { AppRegistry } from 'react-native';
+import App from '../src/App'; // Ensure this path is correct
+import { name as appName } from '../package.json'; // Use package.json for Expo projects
+
+AppRegistry.registerComponent(appName, () => App);
+
+
 
 interface PrayerTimes {
   Fajr: string;
@@ -15,8 +23,17 @@ interface PrayerTimes {
   Isha: string;
 }
 
+interface fridayPrayers{
+  MasjidAbuBakr: string;
+  Darussalaam: string;
+}
+
 interface PrayerTimesProps {
   prayerTimes: PrayerTimes;
+}
+
+interface FridayPrayerTimesProps {
+  fridayPrayers: fridayPrayers;
 }
 
 
@@ -36,12 +53,33 @@ const PrayerTimesComponent: React.FC<PrayerTimesProps> = ({ prayerTimes }) => {
   );
 };
 
-const examplePrayerTimes: PrayerTimes = {
-  Fajr: '05:00 AM',
+const dailyPrayerTimes: PrayerTimes = {
+  Fajr: '5:00 AM',
   Dhuhr: '1:30 PM',
-  Asr: '06:00 PM',
-  Maghrib: '08:00 PM',
-  Isha: '09:30 PM',
+  Asr: '6:00 PM',
+  Maghrib: '8:00 PM',
+  Isha: '9:30 PM',
+};
+
+const FridayPrayerTimesComponent: React.FC<FridayPrayerTimesProps> = ({ fridayPrayers }) => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.heading}>Friday Prayer Times</Text>
+      <View style={styles.table}>
+        {Object.entries(fridayPrayers).map(([prayer, time]) => (
+          <View key={prayer} style={styles.row}>
+            <Text style={styles.cell}>{prayer}</Text>
+            <Text style={styles.cell}>{time}</Text>
+          </View>
+        ))}
+      </View>
+    </View>
+  );
+};
+
+const fridayPrayerTimes: fridayPrayers = {
+  Darussalaam: '1:30 PM',
+  MasjidAbuBakr: '2:00 PM',
 };
 
 
@@ -55,43 +93,16 @@ export default function HomeScreen() {
           style={styles.jmaLogo}
         />
       }>
-      
+
       <View style={{ flex: 1 }}>
-        <PrayerTimesComponent prayerTimes={examplePrayerTimes} />
+        <PrayerTimesComponent prayerTimes={dailyPrayerTimes} />
       </View>
 
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title" style={styles.subtitle}>Friday Prayers</ThemedText>
-      </ThemedView>
+      <View style={{ flex: 1 }}>
+        <FridayPrayerTimesComponent fridayPrayers={fridayPrayerTimes} />
+      </View>
 
 
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
     </ParallaxScrollView>
   );
 }
@@ -99,12 +110,13 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   titleContainer: {
-    flexDirection: 'row',
+
     alignItems: 'center',
-    gap: 8,
+
   },
   subtitle: {
-    fontSize: 25
+    fontSize: 25,
+
   },
   stepContainer: {
     gap: 8,
