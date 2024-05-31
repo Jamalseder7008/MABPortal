@@ -6,12 +6,6 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
-// index.tsx
-import { AppRegistry } from 'react-native';
-import App from '../src/App'; // Ensure this path is correct
-import { name as appName } from '../package.json'; // Use package.json for Expo projects
-
-AppRegistry.registerComponent(appName, () => App);
 
 
 
@@ -57,7 +51,7 @@ const dailyPrayerTimes: PrayerTimes = {
   Fajr: '5:00 AM',
   Dhuhr: '1:30 PM',
   Asr: '6:00 PM',
-  Maghrib: '8:00 PM',
+  Maghrib: 'Sunset',
   Isha: '9:30 PM',
 };
 
