@@ -15,13 +15,15 @@
       "width": 50
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sedertech.MABPortal"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.sedertech.MABPortal"
     },
     "web": {
       "bundler": "metro",

@@ -15,11 +15,10 @@ export default function TabLayout() {
         headerShown: false,
       }}>
       <Tabs.Screen
-      
         name="index"
         options={{
           title: 'Home',
-          
+
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'home' : 'home-outline'} size={25} color={color} />
           ),

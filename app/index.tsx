@@ -6,7 +6,13 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
+// index.tsx - this might need to go into index.tsx
+// import { AppRegistry } from 'react-native';
+// import App from '../src/App'; // Ensure this path is correct
+// import { name as appName } from '../package.json'; // Use package.json for Expo projects
 
+// AppRegistry.registerComponent(appName, () => App);
+// //up to here
 
 
 interface PrayerTimes {

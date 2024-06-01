@@ -4,12 +4,12 @@ import '@react-native-firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'YOUR_API_KEY',
-  authDomain: 'YOUR_AUTH_DOMAIN',
-  projectId: 'YOUR_PROJECT_ID',
-  storageBucket: 'YOUR_STORAGE_BUCKET',
-  messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
-  appId: 'YOUR_APP_ID',
+  apiKey: 'AIzaSyAeWtkRf5IeolaA17SQd2c-AJ6TNIsrLVo',
+  authDomain: 'mabportal-c890a.firebaseapp.com',
+  projectId: 'mabportal-c890a',
+  storageBucket: 'mabportal-c890a.appspot.com',
+  messagingSenderId: '1087019305282',
+  appId: '1:1087019305282:ios:ed9fa68c616330cdef20db',
 };
 
 // Initialize Firebase
