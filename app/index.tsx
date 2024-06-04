@@ -22,7 +22,7 @@ const HomeScreen = () => {
   useEffect(() => {
     const fetchPrayerTimes = async () => {
       try {
-        const data = require('../backend/prayerTimes.json'); // Update path if necessary
+        const data = require('../backend/data/prayerTimes.json'); // Update path if necessary
         setPrayerTimes(data);
       } catch (error) {
         console.error('Error fetching prayer times:', error);
@@ -31,7 +31,7 @@ const HomeScreen = () => {
 
     const fetchFridayPrayerTimes = async () => {
       try {
-        const data = require('../backend/fridayPrayerTimes.json'); // Update path if necessary
+        const data = require('../backend/data/fridayPrayerTimes.json'); // Update path if necessary
         setFridayPrayerTimes(data);
       } catch (error) {
         console.error('Error fetching Friday prayer times:', error);

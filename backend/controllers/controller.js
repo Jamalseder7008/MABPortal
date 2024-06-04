@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { PrayerTime, FridayPrayerTime } = require('./models');
+const { PrayerTime, FridayPrayerTime } = require('../models/prayerModels');
 
 async function fetchDataAndWriteToFile(docId, filename, model) {
   try {

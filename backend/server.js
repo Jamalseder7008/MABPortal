@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const { fetchDataAndWriteToFile } = require('./controller');
-const { PrayerTime, FridayPrayerTime } = require('./models');
+const { fetchDataAndWriteToFile } = require('./controllers/controller');
+const { PrayerTime, FridayPrayerTime } = require('./models/prayerModels');
 
 // MongoDB connection string
 const uri = "mongodb+srv://JamalSederPublic:MasjidApp123@mabportal.zsiydao.mongodb.net/PrayerTimes?retryWrites=true&w=majority&appName=MABPortal";
@@ -16,7 +16,7 @@ async function run() {
       console.log("Invalid document ID for prayer times");
       return;
     }
-    await fetchDataAndWriteToFile(prayerDocId, 'prayerTimes.json', PrayerTime);
+    await fetchDataAndWriteToFile(prayerDocId, 'data/prayerTimes.json', PrayerTime);
 
     // Fetches info from controller and model to write Friday prayer times to app
     const fridayPrayerDocId = "665e08b0ec5aed6c54221cdb";
@@ -24,7 +24,7 @@ async function run() {
       console.log("Invalid document ID for Friday prayer times");
       return;
     }
-    await fetchDataAndWriteToFile(fridayPrayerDocId, 'fridayPrayerTimes.json', FridayPrayerTime);
+    await fetchDataAndWriteToFile(fridayPrayerDocId, 'data/fridayPrayerTimes.json', FridayPrayerTime);
     
   } catch (err) {
     console.error('Error during database operations:', err);
