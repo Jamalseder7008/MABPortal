@@ -1,10 +1,9 @@
-// controller.js
 const fs = require('fs');
-const { PrayerTime } = require('./models');
+const { PrayerTime, FridayPrayerTime } = require('./models');
 
-async function fetchDataAndWriteToFile(docId) {
+async function fetchDataAndWriteToFile(docId, filename, model) {
   try {
-    const doc = await PrayerTime.findById(docId).exec();
+    const doc = await model.findById(docId).exec();
     if (!doc) {
       console.log("No document found with the given ID.");
       return;
@@ -13,11 +12,11 @@ async function fetchDataAndWriteToFile(docId) {
     const { _id, ...dataWithoutId } = doc.toObject(); // Exclude _id field
     const data = JSON.stringify(dataWithoutId, null, 2);
 
-    fs.writeFile('backend/out_file.json', data, (err) => {
+    fs.writeFile(`backend/${filename}`, data, (err) => {
       if (err) {
         console.log('Error writing to file:', err);
       } else {
-        console.log('Done writing to file.');
+        console.log(`Done writing to file: ${filename}`);
       }
     });
   } catch (err) {

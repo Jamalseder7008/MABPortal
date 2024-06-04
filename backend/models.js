@@ -1,4 +1,3 @@
-// models.js
 const mongoose = require('mongoose');
 
 const prayerTimeSchema = new mongoose.Schema({
@@ -9,6 +8,12 @@ const prayerTimeSchema = new mongoose.Schema({
   Isha: { type: String, required: true },
 });
 
-const PrayerTime = mongoose.model('PrayerTime', prayerTimeSchema, 'PrayerTimesCollection');
+const fridayPrayerTimeSchema = new mongoose.Schema({
+  Darussalaam: { type: String, required: true },
+  MasjidAbuBakr: { type: String, required: true },
+});
 
-module.exports = { PrayerTime };
+const PrayerTime = mongoose.model('PrayerTime', prayerTimeSchema, 'PrayerTimesCollection');
+const FridayPrayerTime = mongoose.model('FridayPrayerTime', fridayPrayerTimeSchema, 'FridayPrayerTimesCollection');
+
+module.exports = { PrayerTime, FridayPrayerTime };
